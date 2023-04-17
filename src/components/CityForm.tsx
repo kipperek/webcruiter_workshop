@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
+import { Field, Form, Formik } from "formik";
 import { useMutation, useQueryClient } from "react-query";
 import { MutateCities } from "../common/dto";
 const CityForm: React.FC = () => {
-  const [city, setCity] = useState("");
-
   const queryClient = useQueryClient();
 
   const { mutate, isLoading } = useMutation(async (city: string) => {
@@ -11,17 +10,32 @@ const CityForm: React.FC = () => {
     queryClient.invalidateQueries("CITIES");
   });
 
-  const saveCity = () => {
-    mutate(city);
-    setCity("");
+  const saveCity = (
+    values: { city: string },
+    { resetForm }: { resetForm: () => void }
+  ) => {
+    console.log(values);
+    mutate(values.city);
+    resetForm();
   };
 
   return (
-    <>
-      <input value={city} onChange={(e) => setCity(e.target.value)} />
-      {!isLoading && <button onClick={saveCity}>SAVE</button>}
+    <div>
+      <Formik
+        initialValues={{
+          city: "",
+        }}
+        onSubmit={saveCity}
+      >
+        {() => (
+          <Form>
+            <Field type="text" name="city" />
+            {!isLoading && <button type="submit">SAVE</button>}
+          </Form>
+        )}
+      </Formik>
       {isLoading && "Please wait"}
-    </>
+    </div>
   );
 };
 
