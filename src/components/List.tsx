@@ -2,7 +2,7 @@ import React from "react";
 import classNames from "classnames";
 import useGetIndex from "./hooks/useGetIndex";
 
-type ListProps = {
+export type ListProps = {
   items: string[];
 };
 
@@ -11,6 +11,7 @@ const List: React.FC<ListProps> = ({ items }) => {
 
   const renderItem = (item: string, index: number) => (
     <div
+      data-testid="item"
       key={index}
       className={classNames({
         active: selectedIndex === index,
