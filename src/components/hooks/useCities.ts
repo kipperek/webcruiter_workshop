@@ -1,12 +1,12 @@
 import { useQuery } from "react-query";
-import { GetCompanyPath } from "../../common/dto";
+import { GetCities } from "../../common/dto";
 
 const useCities = () => {
-  const { isLoading, data } = useQuery({
+  const { isFetching, data } = useQuery({
     queryKey: ["CITIES"],
-    queryFn: GetCompanyPath,
+    queryFn: GetCities,
   });
 
-  return { isLoading, data: data || [] };
+  return { isFetching, data: data || [] };
 };
 export default useCities;

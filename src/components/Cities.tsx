@@ -1,13 +1,19 @@
 import React from "react";
 import List from "./List";
 import useCities from "./hooks/useCities";
+import CityForm from "./CityForm";
 
 const Cities: React.FC = () => {
-  const { data: cities, isLoading } = useCities();
+  const { data: cities, isFetching } = useCities();
 
-  if (isLoading) return <div>LOADING!</div>;
+  const content = isFetching ? <div>LOADING!</div> : <List items={cities} />;
 
-  return <List items={cities} />;
+  return (
+    <>
+      {content}
+      <CityForm />
+    </>
+  );
 };
 
 export default Cities;
