@@ -1,14 +1,16 @@
 import React from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
 import ListHeader from "./components/ListHeader";
-import DataContextProvider from "./components/DataContextProvider";
 import Cities from "./components/Cities";
+
+const queryClient = new QueryClient();
 
 const App: React.FC = () => {
   return (
-    <DataContextProvider>
+    <QueryClientProvider client={queryClient}>
       <ListHeader>List of cities in children</ListHeader>
       <Cities />
-    </DataContextProvider>
+    </QueryClientProvider>
   );
 };
 

@@ -1,20 +1,13 @@
 import React from "react";
-import { useDataContext } from "./DataContext";
 import List from "./List";
+import useCities from "./hooks/useCities";
 
 const Cities: React.FC = () => {
-  const { cities, addCity: addCityAlias } = useDataContext();
+  const { data: cities, isLoading } = useCities();
 
-  const addCity = () => {
-    addCityAlias?.("city");
-  };
+  if (isLoading) return <div>LOADING!</div>;
 
-  return (
-    <>
-      <List items={cities} />
-      <button onClick={addCity}>add</button>
-    </>
-  );
+  return <List items={cities} />;
 };
 
 export default Cities;
