@@ -1,8 +1,8 @@
 AGENDA
 
 1. Components, rendering, nesting components
-2. Data binding, arrays, conditional rendering, events,
-3. props, children, function props 
+2. Data binding, arrays, conditional rendering,
+3. props, children, events, function props 
 4. state, useEffect, hooks
 5. context, providers, dispatch functions,
 6. react query

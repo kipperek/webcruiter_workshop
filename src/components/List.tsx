@@ -1,11 +1,21 @@
 import React from "react";
 
 const List: React.FC = () => {
+  const cities = ["Oslo", "Gdansk", "Stockholm"];
+
+  const renderCity = (city: string, index: number) => (
+    <div key={index}>{city}</div>
+  );
+
+  const emptyCityInfo = "List of cities is empty";
+  const citiesEmpty = cities.length === 0;
+
   return (
     <div>
-      <div>Oslo</div>
-      <div>Gdansk</div>
-      <div>Stockholm</div>
+      {citiesEmpty && emptyCityInfo}
+      {cities.map(renderCity)}
+      <br />
+      <div>Number of cities: {cities.length}</div>
     </div>
   );
 };
