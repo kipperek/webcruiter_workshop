@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 
 type ListProps = {
   items: string[];
@@ -8,7 +9,14 @@ const List: React.FC<ListProps> = ({ items }) => {
   const selectedIndex = 0;
 
   const renderItem = (item: string, index: number) => (
-    <div key={index} className="active">{item}</div>
+    <div
+      key={index}
+      className={classNames({
+        active: selectedIndex === index,
+      })}
+    >
+      {item}
+    </div>
   );
 
   const emptyCityInfo = "List of cities is empty";
