@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 
 type ListProps = {
@@ -6,7 +6,11 @@ type ListProps = {
 };
 
 const List: React.FC<ListProps> = ({ items }) => {
-  const selectedIndex = 0;
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+
+  useEffect(()=>{
+    setSelectedIndex(items.length-1);
+  }, [items])
 
   const renderItem = (item: string, index: number) => (
     <div
@@ -14,6 +18,9 @@ const List: React.FC<ListProps> = ({ items }) => {
       className={classNames({
         active: selectedIndex === index,
       })}
+      onClick={()=>{
+        setSelectedIndex(index);
+      }}
     >
       {item}
     </div>
