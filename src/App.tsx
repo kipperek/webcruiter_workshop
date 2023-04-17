@@ -3,7 +3,7 @@ import ListHeader from "./components/ListHeader";
 import List from "./components/List";
 
 const App: React.FC = () => {
-  const [users, setUsers] = useState<string[]>(["Henrik", "Piotr"]);
+  const [users] = useState<string[]>(["Henrik", "Piotr"]);
   const [cities, setCities] = useState<string[]>([
     "Oslo",
     "Gdansk",

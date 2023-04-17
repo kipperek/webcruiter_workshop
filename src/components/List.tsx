@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import classNames from "classnames";
+import useGetIndex from "./hooks/useGetIndex";
 
 type ListProps = {
   items: string[];
 };
 
 const List: React.FC<ListProps> = ({ items }) => {
-  const [selectedIndex, setSelectedIndex] = useState<number>(0);
-
-  useEffect(()=>{
-    setSelectedIndex(items.length-1);
-  }, [items])
+  const { selectedIndex, setSelectedIndex } = useGetIndex(items);
 
   const renderItem = (item: string, index: number) => (
     <div
@@ -18,7 +15,7 @@ const List: React.FC<ListProps> = ({ items }) => {
       className={classNames({
         active: selectedIndex === index,
       })}
-      onClick={()=>{
+      onClick={() => {
         setSelectedIndex(index);
       }}
     >
