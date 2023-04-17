@@ -19,7 +19,7 @@ const List: React.FC<ListProps> = ({ items }) => {
     </div>
   );
 
-  const emptyCityInfo = "List of cities is empty";
+  const emptyCityInfo = "List of items is empty";
   const citiesEmpty = items.length === 0;
 
   return (
